@@ -99,7 +99,7 @@ module.exports = function(grunt) {
           compass: false
         },
         files: {
-          'build/css/style.css':'<%= project.css %>'
+          'build/css/style.css':'<%= project.scss %>'
         }
       }
     },
@@ -131,11 +131,11 @@ module.exports = function(grunt) {
     watch: {
       sass: {
         files: '<%= project.app %>/sass/{,*/}*.{scss,sass}',
-        tasks: ['sass:dev']
+        tasks: ['build', 'express:dev']
       },
       express: {
-        files:  [ 'server.js' ],
-        tasks:  [ 'express:dev' ],
+        files:  [ 'server.js','app/index.html' ],
+        tasks:  [ 'build', 'express:dev' ],
         options: {
           spawn: false
         }
@@ -146,7 +146,7 @@ module.exports = function(grunt) {
       },
       test: {
         files: [ '<%= project.alljs %>', 'test/front-end/**/*.js'],
-        tasks: [ 'build:dev', 'browserify:frontEndTest', 'karma:unit']
+        tasks: [ 'build', 'karma:unit']
       }
     }
   }); //end initConfig

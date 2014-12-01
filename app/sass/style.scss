@@ -1,1 +1,12 @@
 @import 'app/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap';
+
+.avatar {
+  height: 100px;
+  overflow: hidden;
+  img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+  }
+}
+
