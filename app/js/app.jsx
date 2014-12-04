@@ -14,12 +14,15 @@ var Githubbers = React.createClass({
   },
 
   render: function() {
+    startsWithA = str => str.indexOf('a') === 0;
+    classForStartsWithA = login => startsWithA(login) ? 'startsWithA' : '';
+
     return (
         <div className="row">
           {this.state.owners.map(function(item, i) {
             return (
-              <div className="col-md-1 avatar" key={i}>
-                <img src={item.avatar_url} alt="avatar"/>
+              <div className="col-md-1 avatar" key={i} data-startswitha={startsWithA(item.login)}>
+                <img className={classForStartsWithA(item.login)} src={item.avatar_url} alt="avatar"/>
               </div>
             );
           }, this)}
@@ -29,7 +32,6 @@ var Githubbers = React.createClass({
 
   componentDidMount: function() {
     $.getJSON(this.props.source, function (result) {
-      console.log(result);
       if (this.isMounted()) {
         this.setState({
           owners: _.pluck(result,'owner')
