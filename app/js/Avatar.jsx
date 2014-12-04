@@ -9,6 +9,7 @@ var Avatar = React.createClass({
   handleMouseOver: function(event) {
     var item = this.props.item;
     if (startsWithA(item.login)) {
+      // TODO: _.memoize this function to remove duplicate XHR requests?
       $.getJSON(item.followers_url, function (result) {
         if (this.isMounted()) {
           this.setState({ followers: _.pluck(result,'login') });
