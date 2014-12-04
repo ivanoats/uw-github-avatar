@@ -10,8 +10,14 @@ var startsWithA = str => str.indexOf('a') === 0 || str.indexOf('A') === 0;
 
 var Avatar = React.createClass({
   handleMouseOver: function(event) {
-    if (startsWithA(this.props.item.login)) {
-      console.log(this.props.item.followers_url);
+    var item = this.props.item;
+    if (startsWithA(item.login)) {
+      $.getJSON(item.followers_url, function (result) {
+        if (this.isMounted()) {
+          this.setState({ followers: _.pluck(result,'login') });
+          console.log(this.state.followers);
+        }
+      }.bind(this));
     }
   },
   render: function() {
