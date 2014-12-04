@@ -6,6 +6,20 @@ var React = require('react/addons');
 // allow React Dev tools to work
 window.React = React;
 
+var Avatar = React.createClass({
+  render: function() {
+    startsWithA = str => str.indexOf('a') === 0;
+    classForStartsWithA = login => startsWithA(login) ? 'startsWithA' : '';
+    var login = this.props.item.login;
+    var url = this.props.item.avatar_url;
+    return (
+        <div className="col-md-1 avatar">
+          <img className={classForStartsWithA(login)} src={url} alt="avatar" />
+        </div>
+    )
+  }
+});
+
 var Githubbers = React.createClass({
   getInitialState: function() {
     return {
@@ -14,16 +28,11 @@ var Githubbers = React.createClass({
   },
 
   render: function() {
-    startsWithA = str => str.indexOf('a') === 0;
-    classForStartsWithA = login => startsWithA(login) ? 'startsWithA' : '';
-
     return (
         <div className="row">
           {this.state.owners.map(function(item, i) {
             return (
-              <div className="col-md-1 avatar" key={i} data-startswitha={startsWithA(item.login)}>
-                <img className={classForStartsWithA(item.login)} src={item.avatar_url} alt="avatar"/>
-              </div>
+              <Avatar key={i} item={item} />
             );
           }, this)}
         </div>
