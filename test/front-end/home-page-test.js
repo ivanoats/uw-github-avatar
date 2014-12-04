@@ -1,5 +1,6 @@
-'use strict';
-var app = require('../../app/js/app.js');
+/** @jsx React.DOM */
+// does not work now that app is jsx?
+// var app = require('../../app/js/app');
 
 describe('Home Page', function() {
 

@@ -1,0 +1,53 @@
+From: Marc Miles <milesm@uw.edu>
+To: "Ivan S. Storck" <ivanoats@uw.edu>
+Subject: Re: UW Foster Web Application Developer Coding Application
+Date: November 25, 2014 at 11:45:21 AM PST
+
+Go ahead and do the github one instead.  I didnt realize I was sending you all down a rat hole with OAuth. ;-) 
+ 
+Marc Miles | Lead Application Developer
+Michael G. Foster School of Business
+University of Washington
+206-221-5730 tel | 425.457.3757 cell
+From: Ivan Storck <ivanoats@uw.edu>
+Sent: Tuesday, November 25, 2014 11:06 AM
+To: Marc Miles
+Subject: Re: UW Foster Web Application Developer Coding Application
+ 
+Ok, thanks for the options!
+
+I had no problem with OAuth :-)  I also have no problem switching to an easier API. 
+
+I think had already found some great info on Twitter OAuth from the browser, basically including the OAuth info in GET params.
+http://stackoverflow.com/a/5384663/394133
+I haven’t tried this approach myself yet, but I would be interested to find out if it works.
+
+There is a Twitterlib bower component but it’s not up to date. I asked the author if he was interested in seeing a contribution from me: https://github.com/remy/twitterlib/issues/12 
+
+The problem is actually a great teaching example, as long as I make the twitter username and alert words configurable, would that be o.k.? However, I will keep the repo private until you have a chance to review all your submissions.
+
+I am totally o.k. switching to the Github issue as it will take a little less time. Which would you prefer?
+
+Kind regards,
+Ivan
+
+On Nov 25, 2014, at 10:48 AM, Marc Miles <milesm@uw.edu> wrote:
+First I would like to apologize.  I should no longer use that code application I originally sent (twitter API) as it requires OAuth now and the goal was to keep the data source very simple, accessible and no need for a server/keys.
+
+So, lets do the following instead (if you hacked together something already for the previous one you can continue to use that).
+
+*********
+Write a web page that renders the image from the "avatar_url" for each "owner" in this GitHub feed. https://api.github.com/repositories?since=1000 
+
+For any "owners" that have a name starting with the letter 'a' or 'A' please indicate that on the page and when I mouse over that image show me a list of their followers.  Please use JavaScript and Bootstrap as well as any other libraries that you see fit.  You should not need a server for any of this.  Try and fit a large quantity of images on the page above the fold vs. the full original size of the actual source "avatar_url".
+
+https://twitter.com/UWFosterSchool
+******
+
+
+
+Marc Miles | Lead Application Developer
+Michael G. Foster School of Business
+University of Washington
+206-221-5730 tel | 425.457.3757 cell
+

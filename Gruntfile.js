@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       app: ['app'],
       scss: ['<%= project.app %>/sass/style.scss'],
       css: ['<%= project.app %>/css/**/*.css'],
-      alljs: ['<%= project.app %>/js/**/*.js']
+      alljs: [ '<%= project.app %>/js/**/*.js', '<%= project.app %>/js/**/*.jsx' ]
     },
 
     wiredep: {
@@ -65,19 +65,11 @@ module.exports = function(grunt) {
     browserify: {
       dev: {
         options: {
-          transform: ['debowerify'],
+          transform: [ [ 'reactify', {harmony: true} ], 'debowerify' ],
           debug: true
         },
         src: ['<%= project.alljs %>'],
         dest: 'build/js/app.js'
-      },
-      frontEndTest: {
-        options: {
-          transform: ['debowerify'],
-          debug: true
-        },
-        src: ['test/front-end/**/*test.js'],
-        dest: 'test/testbundle.js'
       }
     },
 
@@ -89,7 +81,7 @@ module.exports = function(grunt) {
         configFile: 'karma.conf.js',
         singleRun: true,
         browsers: [ 'PhantomJS' ]
-      },
+      }
     },
 
     sass: {
@@ -152,7 +144,7 @@ module.exports = function(grunt) {
   }); //end initConfig
 
   grunt.registerTask('build', ['clean:dev', 'sass:dev', 'browserify:dev', 'copy:dev']);
-  grunt.registerTask('test', ['build:dev', 'browserify:frontEndTest','karma:unit']);
+  grunt.registerTask('test', ['build:dev','karma:unit']);
   grunt.registerTask('default', ['test','watch']);
   grunt.registerTask('serve', [ 'build:dev', 'express:dev', 'watch' ]);
 

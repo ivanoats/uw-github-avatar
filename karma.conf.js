@@ -41,9 +41,8 @@ module.exports = function(config) {
 
     browserify: {
       debug: true,
-      transform: [ 'debowerify' ]
+      transform: [ [ 'reactify', {harmony: true} ], 'debowerify' ]
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
