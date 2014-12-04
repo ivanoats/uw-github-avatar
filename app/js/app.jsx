@@ -9,27 +9,30 @@ window.React = React;
 var Githubbers = React.createClass({
   getInitialState: function() {
     return {
-      login: '',
-      avatarUrl: ''
+      owners: []
     }
   },
 
   render: function() {
     return (
-      <div className="col-md-1 avatar">
-        <img src={this.state.avatarUrl} alt="avatar"/>
-      </div>
-    )
+        <div className="row">
+          {this.state.owners.map(function(item, i) {
+            return (
+              <div className="col-md-1 avatar" key={i}>
+                <img src={item.avatar_url} alt="avatar"/>
+              </div>
+            );
+          }, this)}
+        </div>
+    );
   },
 
   componentDidMount: function() {
     $.getJSON(this.props.source, function (result) {
-      var firstRepo = result[0];
-      var firstOwner = firstRepo.owner;
+      console.log(result);
       if (this.isMounted()) {
         this.setState({
-          login: firstOwner.login,
-          avatarUrl: firstOwner.avatar_url
+          owners: _.pluck(result,'owner')
         });
       }
     }.bind(this));
